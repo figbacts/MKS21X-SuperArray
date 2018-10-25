@@ -17,7 +17,11 @@ public class SuperArray{
     return false;
   }
   public boolean add(String newthing){
+    if (data.length == size){
+      resize();
+    }
     data[size] = newthing;
+
     size += 1;
     return true;
   }
@@ -38,12 +42,10 @@ public class SuperArray{
   }
   public String toStringDebug(){
     String ans = "[";
-    for(int c = 0; c != size; c++){
-      ans = ans + data[c] + ", ";
+    for(int c = 0; c != data.length - 1; c++){
+      ans = ans + data[c] + ",";
     }
-    for (int i = size; i != 11; i ++){
-      ans = ans + "null, ";
-    }
+    ans = ans + data[data.length -1];
     ans = ans + "]";
     return ans;
 
@@ -65,5 +67,11 @@ public class SuperArray{
     data[index] = newthing;
     return returnthing;
   }
-
+private void resize(){
+  String[] ans = new String[data.length * 2];
+  for (int i = 0; i < size; i++){
+    ans[i] = data[i];
+  }
+  data = ans;
+}
 }

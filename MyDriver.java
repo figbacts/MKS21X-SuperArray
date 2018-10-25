@@ -82,5 +82,28 @@ public class MyDriver{
 		System.out.println("SuperArray should now be []");
 		System.out.println(beef);
 		/** phase 1 testing end*/
+		System.out.println("-----------------------------");
+        System.out.println("Testing Phase 2");
+        SuperArray resizeTest = new SuperArray();
+        for (int i = 0; i < 10; i++){
+            resizeTest.add("filler");
+        }
+        System.out.println("size before resize:" + resizeTest.size());
+        resizeTest.add("haha");
+        System.out.println(resizeTest);
+        System.out.println(resizeTest.toStringDebug()); // should have 20 spaces with 9 empty spaces
+        System.out.println("size after resize:" + resizeTest.size());
+        for (int i = 11; i < 20; i++){
+            resizeTest.add("filler");
+        }
+        System.out.println("size before resize:" + resizeTest.size());
+        resizeTest.add("haha");
+        System.out.println(resizeTest);
+        System.out.println(resizeTest.toStringDebug()); // should have 40 spaces with 9 empty spaces
+        System.out.println("size after resize:" + resizeTest.size());
+        for (int i = 21; i < 40; i++){
+            resizeTest.add("filler");
+        }
+        System.out.println("This should print 40: " + resizeTest.size());
 	}
 }
