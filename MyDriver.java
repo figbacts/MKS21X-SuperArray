@@ -105,5 +105,9 @@ public class MyDriver{
             resizeTest.add("filler");
         }
         System.out.println("This should print 40: " + resizeTest.size());
+				System.out.println("-----------------------------");
+		        System.out.println("Testing Phase 3");
+						System.out.println ("Testing contains");
+						System.out.println(resizeTest.contains("haha"));
 	}
 }

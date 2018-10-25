@@ -74,4 +74,21 @@ private void resize(){
   }
   data = ans;
 }
+public boolean contains(String target){
+  boolean ans = false;
+  for (int i = 0; i < size;i++){
+    if (data[i].equals(target)){
+      ans = true;
+    }
+  }
+  return ans;
+}
+public int indexOf(String target){
+  for (int i = 0; i < size; i++){
+    if (data[i].equals(target)){
+      return i;
+    }
+  }
+  return -1;
+}
 }
