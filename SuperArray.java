@@ -91,4 +91,63 @@ public int indexOf(String target){
   }
   return -1;
 }
+public int lastIndexOf(String target){
+  int ans = -1;
+  for (int i = 0; i < size; i++){
+    if (data[i].equals(target)){
+      ans = i;
+    }
+}
+return ans;
+}
+public void add (int index, String test){
+  boolean flag = false;
+  String[] ans = new String[data.length + 1];
+  if (index < 0 || index >= size()) {
+    System.out.println("YOOOO There is a index errrrrror");
+  }
+  for (int i = 0; i < size; i++){
+    if (i == index){
+      flag = true;
+      ans[i] = test;
+    }
+    if (flag == false){
+      ans[i] = data[i];
+    }
+    if (flag){
+      ans[i+1] = data[i];
+    }
+}
+data = ans;
+size = size + 1;
+}
+public String remove (int index){
+  boolean flag = false;
+  String removed = "";
+  String[] ans = new String[data.length -1 ];
+  if (index < 0 || index >= size()) {
+    System.out.println("YOOOO There is a index errrrrror");
+  }
+  for (int i = 0; i < size; i++){
+    if (i == index){
+      flag = true;
+      removed = data[i];
+      ans[i] = data[i + 1 ];
+    }
+    if (flag == false){
+      ans[i] = data[i];
+    }
+    if (flag){
+      ans[i] = data[i+1];
+    }
+}
+data = ans;
+size = size -1;
+return removed;
+}
+public boolean remove(String test){
+  int index = indexOf(test);
+  remove(index);
+  return true;
+}
 }
