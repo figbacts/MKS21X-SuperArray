@@ -4,6 +4,12 @@ public class SuperArray{
   public SuperArray(){
     data = new String[10];
   }
+  public SuperArray(int index){
+    if (index < 0 ){
+      throw new IllegalArgumentException("Illegal Argument at SuperArray(int)");
+    }
+    data = new String[index];
+  }
   public void clear(){
     size = 0;
   }
@@ -42,6 +48,9 @@ public class SuperArray{
   }
   public String toStringDebug(){
     String ans = "[";
+    if (data.length == 0){
+      return null;
+    }
     for(int c = 0; c != data.length - 1; c++){
       ans = ans + data[c] + ",";
     }
@@ -52,23 +61,21 @@ public class SuperArray{
   }
   public String get(int index){
     if (index < 0 || index >= size()){
-      System.out.println("INDEX NOT VALID");
-      return null;
+      throw new IndexOutOfBoundsException("Bad Index at get(int)");
     }
     return data[index];
   }
   public String set(int index,String newthing){
     String returnthing = "";
     if (index < 0 || index >= size()){
-      System.out.println("INDEX NOT VALID");
-      return null;
+      throw new IndexOutOfBoundsException("Bad Index at set(int,String)");
     }
     returnthing = data[index];
     data[index] = newthing;
     return returnthing;
   }
 private void resize(){
-  String[] ans = new String[data.length * 2];
+  String[] ans = new String[(data.length * 2)+1];
   for (int i = 0; i < size; i++){
     ans[i] = data[i];
   }
@@ -104,7 +111,7 @@ public void add (int index, String test){
   boolean flag = false;
   String[] ans = new String[data.length + 1];
   if (index < 0 || index >= size()) {
-    System.out.println("YOOOO There is a index errrrrror");
+    throw new IndexOutOfBoundsException("Bad Index at add(int,String)");
   }
   for (int i = 0; i < size; i++){
     if (i == index){
@@ -126,7 +133,7 @@ public String remove (int index){
   String removed = "";
   String[] ans = new String[data.length -1 ];
   if (index < 0 || index >= size()) {
-    System.out.println("YOOOO There is a index errrrrror");
+    throw new IndexOutOfBoundsException("Bad Index at remove(int)");
   }
   for (int i = 0; i < size; i++){
     if (i == index){
@@ -146,6 +153,9 @@ size = size -1;
 return removed;
 }
 public boolean remove(String test){
+  if (indexOf(test) == -1){
+    return false;
+  }
   int index = indexOf(test);
   remove(index);
   return true;
