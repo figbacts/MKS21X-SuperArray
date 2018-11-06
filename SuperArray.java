@@ -110,7 +110,7 @@ return ans;
 public void add (int index, String test){
   boolean flag = false;
   String[] ans = new String[data.length + 1];
-  if (index < 0 || index >= size()) {
+  if (index < 0 || index > size()) {
     throw new IndexOutOfBoundsException("Bad Index at add(int,String)");
   }
   for (int i = 0; i < size; i++){
@@ -118,12 +118,14 @@ public void add (int index, String test){
       flag = true;
       ans[i] = test;
     }
+
     if (flag == false){
       ans[i] = data[i];
     }
     if (flag){
       ans[i+1] = data[i];
     }
+
 }
 data = ans;
 size = size + 1;
